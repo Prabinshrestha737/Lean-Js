@@ -116,13 +116,17 @@ var arr = [1,2,3,4,5,6,7];
 console.log(arr);
 
 for(var i =0;i<arr.length;i++){
+    if (i==3){
+        // break;
+        continue;
+    }
     console.log(arr[i])
 }
 
 
-arr.forEach(function(element){
-    console.log(element);
-})
+// arr.forEach(function(element){
+//     console.log(element);
+// })
 
 
 // let j=0;
@@ -131,9 +135,90 @@ arr.forEach(function(element){
 
 
 
-let j = 0;
-while(j<arr.length){
-    console.log(arr[j]);
-    j++;
+// let j = 0;
+// while(j<arr.length){
+//     console.log(arr[j]);
+//     j++;
     
-}
+// }
+
+// do {
+//     console.log(arr[j]);
+//     j++
+// } while (j<arr.length)
+
+
+
+let myArr = ["fan", "prabi", "xyz", true, 34];
+
+// Array methods 
+console.log("JS Array method")
+console.log(myArr.length);
+myArr.pop();
+myArr.push('Pushed');
+myArr.shift()
+console.log(myArr);
+
+//convert into string()
+myArr.toString()
+
+// String methods in JS
+console.log("JS string method")
+let myString = "I am a good"
+console.log(myString.length)
+console.log(myString.indexOf("good"))
+console.log(myString.lastIndexOf("good"))
+
+console.log(myString.slice(1,4))
+
+//Replace first orrcurence in the string
+console.log(myString.replace("I am", "We are"))
+
+
+let myDate = new Date();
+
+// console.log(myDate);
+
+console.log(myDate.getDay());
+console.log(myDate.getFullYear());
+console.log(myDate.getTime());
+
+
+
+// DOM manipulation 
+
+let elem = document.getElementById('click');
+console.log(elem);
+
+let elemClass = document.getElementsByClassName('container')
+console.log(elemClass)
+
+elemClass[0].style.background = 'yellow';
+elemClass[0].classList.add('bg-primary');
+elemClass[0].classList.add('text-success');
+
+
+console.log("Print DIV")
+tn = document.getElementsByTagName('div')
+console.log(tn)
+
+createdElement = document.createElement('p');
+createdElement.innerText = "THis is created using inner element"
+tn[0].appendChild(createdElement);
+
+createdElement2 = document.createElement('b');
+createdElement2.innerText = "THis is created bold";
+
+tn[0].replaceChild(createdElement2, createdElement);
+
+
+console.log('Query Selector')
+// Selecting using Query 
+
+sel = document.querySelector('.container')
+console.log(sel)
+
+sel = document.querySelectorAll('.container')
+console.log(sel)
+
+
