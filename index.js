@@ -222,3 +222,113 @@ sel = document.querySelectorAll('.container')
 console.log(sel)
 
 
+function clicked(){
+    console.log('The button was clicked')
+}
+
+window.onload = function(){
+    console.log("The document was loaded")
+}
+
+
+// Events in JS 
+
+
+
+firstContainer.addEventListener('click', function(){
+    document.querySelectorAll('.container')[1].innerHTML = "<b> We clicked </b>"
+    console.log("Clickedddd");
+})
+
+firstContainer.addEventListener('mouseover', function(){
+    console.log("Mouse on container");
+})
+
+firstContainer.addEventListener('mouseout', function(){
+    console.log("Mouse outside container");
+})
+
+let prevHTML = document.querySelectorAll('.container')[1].innerHTML;
+
+firstContainer.addEventListener('mouseup', function(){
+    document.querySelectorAll('.container')[1].innerHTML = prevHTML;
+    console.log("Mouse up when clicked on container")
+})
+
+firstContainer.addEventListener('mousedown', function(){
+    document.querySelectorAll('.container')[1].innerHTML = "<b> We clicked </b>";  
+    console.log("Mouse down when clicked on container")
+})
+
+
+
+// Arrow functions 
+
+function summ(a,b){
+    return a+b;
+}
+
+// This function can be written as. 
+
+summ = (a,b)=>{
+    return a+b;
+}
+
+// setTimeout and setinterval
+
+//settimeout
+// It schedules the things. 
+loggin = ()=>{
+    document.querySelectorAll('.container')[1].innerHTML = "<b> Set interval fired </b>";
+    console.log("I am your log")
+}
+// setTimeout(loggin, 2000)
+
+//set Interval
+// It is if u want repetation after sometime 
+
+// clr = setInterval(loggin, 2000)
+// console.log(clr)
+
+// Use clearInterval/clearTimeout to cancel setInterbal/setTimeout
+// clearInterval(clr)
+
+
+
+/// JS LocalStorage
+
+console.log("local Storage")
+
+localStorage.setItem('name', 'prabin')
+
+localStorage.getItem('name')
+
+localStorage.clear();
+
+
+
+//Json 
+console.log("Json")
+obj = {
+    name: "Prabin", 
+    length: 1
+}
+console.log(obj)
+jso = JSON.stringify(obj);
+//Stringfy converts to string
+
+console.log(jso)
+
+parsed = JSON.parse(`
+{"name": "Prabin", 
+"length": 1}
+`)
+
+console.log("parsed")
+console.log(parsed)
+
+// Backticks or template literls 
+console.log('backtickssss')
+a = 34
+
+console.log(`This is my ${a}`)
