@@ -1,7 +1,7 @@
 const inputs = document.querySelector(".inputs"),
-resetBtn = document.querySelector(".reset-btn"),
-hint = document.querySelector(".hint span"),
-typingInput = document.querySelector(".typing-input");
+    resetBtn = document.querySelector(".reset-btn"),
+    hint = document.querySelector(".hint span"),
+    typingInput = document.querySelector(".typing-input");
 wrongLetter = document.querySelector(".wrong-letter span");
 guessLeft = document.querySelector(".guess-left span");
 
@@ -21,7 +21,7 @@ function randomWord() {
 
     let html = "";
 
-    for (let i = 0; i< word.length;i++) {
+    for (let i = 0; i < word.length; i++) {
         html += `<input type="text" disabled>`;
 
     }
@@ -32,43 +32,51 @@ function randomWord() {
 
 randomWord();
 
-function initGame(e){
+function initGame(e) {
     let key = e.target.value;
-    if(key.match(/^[A-Za-z]+$/) && !incorrects.includes( `${key}`) && !corrects.includes(key)) {
+    if (key.match(/^[A-Za-z]+$/) && !incorrects.includes(`${key}`) && !corrects.includes(key)) {
         console.log(key);
-        if(word.includes(key)){ // if user letter found in the word
-            for (let i = 0;  i <word.length;i++) {
-                if(word[i]=== key){
+        if (word.includes(key)) { // if user letter found in the word
+            for (let i = 0; i < word.length; i++) {
+                if (word[i] === key) {
                     corrects.push(key);
-                    inputs.querySelectorAll("input")[i].value= key;
+                    inputs.querySelectorAll("input")[i].value = key;
 
                 }
 
             }
         } else {
-            
+
             maxGuesses--; // Decrement maxGuesses by 1 
             incorrects.push(`${key}`);
         }
         guessLeft.innerHTML = maxGuesses
         wrongLetter.innerHTML = incorrects;
     }
-    
-    if (maxGuesses<1) { // if user couldn't found all letters 
-        alert("Game over! You don't have remaining guesses");
-        for (let i = 0;  i <word.length;i++) {
-            if(word[i]=== key){
-                corrects.push(key);
-                inputs.querySelectorAll("input")[i].value= key;
 
-            }
 
-        }
-        
-
-    }
     typingInput.value = "";
-   
+
+    setTimeout(() => {
+        if (corrects.length === word.length) { // if user found all letters 
+            alert(`Congrats! you found the word ${word.toUpperCase()}`);
+        } else if (maxGuesses < 1) { // if user couldn't found all letters 
+            alert("Game over! You don't have remaining guesses");
+            for (let i = 0; i < word.length; i++) {
+                if (word[i] === key) {
+                    corrects.push(key);
+                    inputs.querySelectorAll("input")[i].value = key;
+    
+                }
+    
+            }
+    
+    
+        }
+
+    })
+
+    
 }
 
 resetBtn.addEventListener("click", randomWord);
